@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#020617"/>
+  <circle cx="920" cy="160" r="260" fill="#1D4ED8" opacity="0.18"/>
+  <circle cx="260" cy="480" r="220" fill="#8B5CF6" opacity="0.22"/>
+  <path d="M0 430C180 360 305 515 510 420C715 325 830 385 1200 270V630H0V430Z" fill="#0F172A" opacity="0.75"/>
+  <text x="96" y="230" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800">Alex Chub</text>
+  <text x="100" y="310" fill="#22D3EE" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Frontend Developer</text>
+  <text x="100" y="378" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="30">React / TypeScript / Product Interfaces</text>
+  <text x="850" y="326" fill="#22D3EE" font-family="Inter, Arial, sans-serif" font-size="128" font-weight="800">&lt;/&gt;</text>
+</svg>
