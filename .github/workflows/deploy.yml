@@ -40,6 +40,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Add nojekyll
+        run: touch dist/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -47,6 +50,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+          include-hidden-files: true
 
   deploy:
     environment:
