@@ -4,7 +4,7 @@ One-page portfolio focused on React, TypeScript, product interfaces, SPA archite
 
 ## Preview
 
-<img width="2559" height="1278" alt="image" src="https://github.com/user-attachments/assets/7de1918f-cd0e-46a9-a186-4e31005d8e3f" />
+<img width="2547" height="1276" alt="image" src="https://github.com/user-attachments/assets/57b8333c-9baa-4afa-aef5-5656325012df" />
 
 The website uses a dark visual style with:
 
