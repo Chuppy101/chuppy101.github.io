@@ -2,15 +2,17 @@ import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import { valueCards } from "@/data/profile";
 import { accentClasses } from "@/utils/accent";
 import { cn } from "@/utils/cn";
+import { useContent } from "@/hooks/useContent";
 
 export function WhyHireMeSection() {
+  const { valueCards, ui } = useContent();
+
   return (
     <Section id="why-hire-me">
       <Reveal>
-        <SectionTitle eyebrow="Value" title="Почему стоит нанять меня" />
+        <SectionTitle eyebrow={ui.sections.valueEyebrow} title={ui.sections.valueTitle} />
       </Reveal>
 
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">

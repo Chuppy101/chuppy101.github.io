@@ -2,14 +2,16 @@ import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import { skills, skillGroups } from "@/data/skills";
 import { SkillMap } from "@/components/skills/SkillMap";
+import { useContent } from "@/hooks/useContent";
 
 export function SkillsSection() {
+  const { skills, skillGroups, ui } = useContent();
+
   return (
     <Section id="skills">
       <Reveal>
-        <SectionTitle eyebrow="Tech map" title="Ключевые навыки" />
+        <SectionTitle eyebrow={ui.sections.skillsEyebrow} title={ui.sections.skillsTitle} />
       </Reveal>
 
       <Reveal delay={0.05}>

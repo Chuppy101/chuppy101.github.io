@@ -1,9 +1,9 @@
 import { BriefcaseBusiness, Code2, FolderGit2, Home, Mail, Shapes, UserRoundCheck } from "lucide-react";
 import portfolioLogo from "@/assets/port_logo.png";
-import { navItems, profile, socialLinks } from "@/data/profile";
 import { scrollToSection } from "@/utils/scrollToSection";
 import type { SectionId } from "@/types/content";
 import { cn } from "@/utils/cn";
+import { useContent } from "@/hooks/useContent";
 
 const icons: Record<SectionId, typeof Home> = {
   home: Home,
@@ -19,6 +19,8 @@ type SidebarProps = {
 };
 
 export function Sidebar({ activeSection }: SidebarProps) {
+  const { navItems, profile, socialLinks, ui } = useContent();
+
   return (
     <aside className="fixed inset-y-0 left-0 z-30 hidden w-[260px] border-r border-slate-700/40 bg-slate-950/70 backdrop-blur-2xl lg:block">
       <div className="flex h-full flex-col px-5 py-8">
@@ -26,7 +28,7 @@ export function Sidebar({ activeSection }: SidebarProps) {
           type="button"
           className="group mb-12 flex flex-col items-center text-center"
           onClick={() => scrollToSection("home")}
-          aria-label="Scroll to home"
+          aria-label={ui.sidebar.homeAria}
         >
           <div className="relative mb-5 flex h-24 w-24 items-center justify-center overflow-hidden rounded-[1.9rem] border border-cyan-300/25 bg-slate-950 shadow-2xl shadow-cyan-400/20 ring-1 ring-white/5 transition duration-300 group-hover:scale-105 group-hover:border-cyan-300/60 group-hover:shadow-cyan-400/30">
             <img
@@ -85,7 +87,7 @@ export function Sidebar({ activeSection }: SidebarProps) {
 
         <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-600">
           <Code2 className="h-3.5 w-3.5" />
-          <span>Built with React + TS</span>
+          <span>{ui.sidebar.builtWith}</span>
         </div>
       </div>
     </aside>

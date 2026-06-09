@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { navItems } from "@/data/profile";
+import { sectionIds } from "@/data/localizedContent";
 import type { SectionId } from "@/types/content";
 
 export function useActiveSection() {
@@ -22,8 +22,8 @@ export function useActiveSection() {
       },
     );
 
-    navItems.forEach((item) => {
-      const section = document.getElementById(item.id);
+    sectionIds.forEach((sectionId) => {
+      const section = document.getElementById(sectionId);
       if (section) observer.observe(section);
     });
 

@@ -1,6 +1,6 @@
-import { projectCategories } from "@/data/projects";
 import type { ProjectCategory } from "@/types/content";
 import { cn } from "@/utils/cn";
+import { useContent } from "@/hooks/useContent";
 
 type ProjectFilterProps = {
   activeCategory: ProjectCategory;
@@ -8,8 +8,10 @@ type ProjectFilterProps = {
 };
 
 export function ProjectFilter({ activeCategory, onChange }: ProjectFilterProps) {
+  const { projectCategories, projectCategoryLabels, ui } = useContent();
+
   return (
-    <div className="flex flex-wrap gap-2" aria-label="Project filters">
+    <div className="flex flex-wrap gap-2" aria-label={ui.project.filterAria}>
       {projectCategories.map((category) => {
         const active = activeCategory === category;
 
@@ -26,7 +28,7 @@ export function ProjectFilter({ activeCategory, onChange }: ProjectFilterProps) 
             )}
             aria-pressed={active}
           >
-            {category}
+            {projectCategoryLabels[category]}
           </button>
         );
       })}

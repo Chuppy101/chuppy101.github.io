@@ -5,6 +5,7 @@ import { ProjectPreview } from "./ProjectPreview";
 import type { Project } from "@/types/content";
 import { accentClasses } from "@/utils/accent";
 import { cn } from "@/utils/cn";
+import { useContent } from "@/hooks/useContent";
 
 type ProjectCardProps = {
   project: Project;
@@ -13,6 +14,7 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, onOpen }: ProjectCardProps) {
   const accent = accentClasses[project.accent];
+  const { ui } = useContent();
 
   return (
     <Card
@@ -25,7 +27,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
         type="button"
         onClick={onOpen}
         className="block w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
-        aria-label={`Open ${project.title} details`}
+        aria-label={`${ui.project.openDetails}: ${project.title}`}
       >
         <ProjectPreview type={project.preview} accent={project.accent} />
       </button>
@@ -40,7 +42,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
             type="button"
             onClick={onOpen}
             className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-700/60 bg-white/[0.03] text-slate-400 transition hover:border-cyan-300/60 hover:text-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
-            aria-label={`Open ${project.title} details`}
+            aria-label={`${ui.project.openDetails}: ${project.title}`}
           >
             <Maximize2 className="h-4 w-4" />
           </button>

@@ -2,10 +2,12 @@ import { ArrowRight, Download, GitBranch, Sparkles } from "lucide-react";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/layout/Section";
-import { profile } from "@/data/profile";
 import { scrollToSection } from "@/utils/scrollToSection";
+import { useContent } from "@/hooks/useContent";
 
 export function HeroSection() {
+  const { profile, ui } = useContent();
+
   return (
     <Section id="home" className="flex min-h-[760px] items-center border-b border-slate-800/70 py-12 lg:min-h-screen">
       <div className="grid w-full items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
@@ -13,7 +15,7 @@ export function HeroSection() {
           <div className="max-w-3xl">
             <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-slate-700/60 bg-white/[0.04] px-4 py-2 text-sm font-medium text-slate-300 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
               <Sparkles className="h-4 w-4 text-cyan-300" />
-              Привет, я Александр
+              {ui.hero.greeting}
             </div>
 
             <h1 className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
@@ -35,7 +37,7 @@ export function HeroSection() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button variant="primary" onClick={() => scrollToSection("projects")}>
-                Посмотреть проекты
+                {ui.hero.viewProjects}
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <ButtonLink href={profile.githubUrl} target="_blank" rel="noreferrer" variant="secondary">
@@ -44,14 +46,14 @@ export function HeroSection() {
               </ButtonLink>
               <ButtonLink href={profile.resumeUrl} variant="secondary" download>
                 <Download className="h-4 w-4" />
-                Скачать резюме
+                {ui.hero.downloadResume}
               </ButtonLink>
             </div>
 
             <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
-              <Stat label="Experience" value="3+ years" />
-              <Stat label="Main stack" value="React + TS" />
-              <Stat label="Focus" value="Product UI" />
+              {ui.hero.stats.map((stat) => (
+                <Stat key={stat.label} label={stat.label} value={stat.value} />
+              ))}
             </div>
           </div>
         </Reveal>

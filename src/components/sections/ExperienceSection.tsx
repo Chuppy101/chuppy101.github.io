@@ -3,15 +3,17 @@ import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import { experience } from "@/data/experience";
 import { accentClasses } from "@/utils/accent";
 import { cn } from "@/utils/cn";
+import { useContent } from "@/hooks/useContent";
 
 export function ExperienceSection() {
+  const { experience, ui } = useContent();
+
   return (
     <Section id="experience">
       <Reveal>
-        <SectionTitle eyebrow="Commercial experience" title="Опыт работы" />
+        <SectionTitle eyebrow={ui.sections.experienceEyebrow} title={ui.sections.experienceTitle} />
       </Reveal>
 
       <div className="relative space-y-5 pl-5 before:absolute before:left-[10px] before:top-2 before:h-[calc(100%-16px)] before:w-px before:bg-gradient-to-b before:from-cyan-300 before:via-violet-400 before:to-lime-300 sm:pl-8 sm:before:left-[15px]">

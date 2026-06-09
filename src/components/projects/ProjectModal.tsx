@@ -5,9 +5,11 @@ import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { ProjectPreview } from "./ProjectPreview";
 import type { Project } from "@/types/content";
+import { useContent } from "@/hooks/useContent";
 
 export function ProjectModal({ project, onClose }: { project: Project | null; onClose: () => void }) {
   const reduceMotion = useReducedMotion();
+  const { ui } = useContent();
 
   useEffect(() => {
     if (!project) return;
@@ -33,7 +35,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
             type="button"
             className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
             onClick={onClose}
-            aria-label="Close project details"
+            aria-label={ui.project.closeDetails}
             initial={reduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -48,14 +50,14 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
           >
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-800 bg-slate-950/90 px-5 py-4 backdrop-blur-xl">
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-cyan-300/80">Case details</p>
+                <p className="text-xs uppercase tracking-[0.25em] text-cyan-300/80">{ui.project.caseDetails}</p>
                 <h3 className="mt-1 text-xl font-black text-white">{project.title}</h3>
               </div>
               <button
                 type="button"
                 onClick={onClose}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700/60 text-slate-300 transition hover:border-cyan-300/50 hover:text-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300"
-                aria-label="Close"
+                aria-label={ui.project.closeDetails}
               >
                 <X className="h-5 w-5" />
               </button>
@@ -86,11 +88,11 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
               </div>
 
               <div className="space-y-6">
-                <InfoBlock title="Описание" text={project.caseSummary} />
-                <InfoBlock title="Моя роль" text={project.role} />
-                <InfoBlock title="Задача" text={project.problem} />
+                <InfoBlock title={ui.project.description} text={project.caseSummary} />
+                <InfoBlock title={ui.project.role} text={project.role} />
+                <InfoBlock title={ui.project.problem} text={project.problem} />
                 <div>
-                  <h4 className="text-sm font-black uppercase tracking-[0.18em] text-slate-500">Что реализовал</h4>
+                  <h4 className="text-sm font-black uppercase tracking-[0.18em] text-slate-500">{ui.project.solution}</h4>
                   <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
                     {project.solution.map((item) => (
                       <li key={item} className="flex gap-3">
@@ -100,7 +102,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
                     ))}
                   </ul>
                 </div>
-                <InfoBlock title="Результат" text={project.result} />
+                <InfoBlock title={ui.project.result} text={project.result} />
               </div>
             </div>
           </motion.div>

@@ -1,5 +1,9 @@
 import type { LucideIcon } from "lucide-react";
 
+export type ThemeMode = "dark" | "light";
+
+export type Language = "ru" | "en";
+
 export type SectionId = "home" | "projects" | "experience" | "skills" | "why-hire-me" | "contact";
 
 export type SocialLink = {
