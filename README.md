@@ -4,7 +4,7 @@ One-page portfolio focused on React, TypeScript, product interfaces, SPA archite
 
 ## Preview
 
-The website uses a dark premium visual style with:
+The website uses a dark visual style with:
 
 - sticky desktop sidebar;
 - responsive mobile navigation;
